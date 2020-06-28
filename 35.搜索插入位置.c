@@ -8,6 +8,25 @@
 
 
 int searchInsert(int* nums, int numsSize, int target){
+    int min = 0;
+    int max = numsSize-1;
+
+    while (max>=min)
+    {
+        int n = (max+min)/2;
+        if (target < nums[n]) {
+            max = n-1;
+        }
+        if (target > nums[n]) {
+            min = n+1;
+        }
+        if (target == nums[n])
+        {
+            return n;
+        }
+        
+    }
+    return min;
 
 }
 
