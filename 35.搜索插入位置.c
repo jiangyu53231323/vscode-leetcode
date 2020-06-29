@@ -6,6 +6,9 @@
 
 // @lc code=start
 
+/* 
+    二分法查找
+ */
 
 int searchInsert(int* nums, int numsSize, int target){
     int min = 0;

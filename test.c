@@ -1,15 +1,6 @@
-/*
- * @lc app=leetcode.cn id=28 lang=c
- *
- * [28] 实现 strStr()
- */
-
-// @lc code=start
-
-/* 
-    1、for循环暴力求解
-    2、KMP算法
- */
+#include <stdio.h>
+#include <string.h>
+#include<malloc.h>
 
 int strStr(char * haystack, char * needle){
 
@@ -35,17 +26,10 @@ int strStr(char * haystack, char * needle){
         }
     }
     return -1; */
-    
-    // ==================================================================
+
     // KMP算法
     int len1=strlen(haystack);
     int len2=strlen(needle);
-    if(len2==0){
-        return 0;
-    }
-    if(len1<len2)
-        return -1;
-
     // dp[状态][字符]=下个状态
     // 默认状态为0
     int **dp = (int **)malloc(sizeof(int*)*len2);
@@ -94,6 +78,12 @@ int strStr(char * haystack, char * needle){
     return -1;
 }
 
-
-// @lc code=end
-
+int main()
+{
+    /* 我的第一个 C 程序 */
+    printf("Hello, World! \n");
+    char *a = "hello";
+    char *b = "ll";
+    int c = strStr(a, b);
+    printf("%d",c);
+}
