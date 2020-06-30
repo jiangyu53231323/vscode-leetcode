@@ -35,7 +35,7 @@ int strStr(char * haystack, char * needle){
         }
     }
     return -1; */
-    
+
     // ==================================================================
     // KMP算法
     int len1=strlen(haystack);
@@ -87,10 +87,18 @@ int strStr(char * haystack, char * needle){
     {
         // 计算模式串的下一个状态
         j = dp[j][haystack[i]];
-        // 到达终止态，返回结果
-        if(j == len2) return i-len2+1;
+        // 到达终止态，返回结果并释放内存
+        if(j == len2) {
+	        for (int n = 0; n < len2; ++n)
+		        free(dp[n]);
+	        free(dp);
+            return i-len2+1;
+        }
     }
-    // 没达到终止态，匹配失败
+    // 没达到终止态，匹配失败，释放内存
+	for (int n = 0; n < len2; ++n)
+	    free(dp[n]);
+	free(dp);
     return -1;
 }
 
